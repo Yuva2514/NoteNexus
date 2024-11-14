@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Notes</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+    <h2>Your Notes</h2>
+
+    <!-- Simulated "Upload a new note" link -->
+    <a href="upload.php">Upload a new note</a>
+
+    <h3>Saved Notes:</h3>
+
+    <ul id="notesList">
+        <!-- Notes will be dynamically injected here by JavaScript -->
+    </ul>
+
+    <a href="logout.php" onclick="logout()">Logout</a>
+
+    <script>
+        // Simulating a session check using localStorage
+        const userId = localStorage.getItem('user_id');
+        if (!userId) {
+            alert('Please log in!');
+            window.location.href = 'login.php'; // Redirect to login page
+        }
+
+        // Function to load notes from localStorage
+        function loadNotes() {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const notesList = document.getElementById('notesList');
+            notesList.innerHTML = ''; // Clear the list
+
+            notes.forEach(note => {
+                const noteItem = document.createElement('li');
+                noteItem.innerHTML = `
+                    <strong>${note.title}</strong>
+                    <p>${note.content}</p>
+                    ${note.file ? `<a href="${note.file}" download>Download File</a>` : ''}
+                    <a href="share.php?note_id=${note.id}" onclick="share(${note.id})">Share</a>
+                    <a href="delete_note.php?id=${note.id}" onclick="deleteNote(${note.id})">Delete</a>
+                `;
+                notesList.appendChild(noteItem);
+            });
+        }
+
+        // Function to delete a note
+        function deleteNote(id) {
+            if (confirm('Are you sure you want to delete this note?')) {
+                const notes = JSON.parse(localStorage.getItem('notes')) || [];
+                const updatedNotes = notes.filter(note => note.id !== id);
+                localStorage.setItem('notes', JSON.stringify(updatedNotes));
+                loadNotes(); // Reload the notes after deletion
+            }
+        }
+
+        // Function to share a note (just a placeholder)
+        function share(id) {
+            alert('Note shared with id: ' + id); // Just an alert for now
+        }
+
+        // Logout function (clear session)
+        function logout() {
+            localStorage.removeItem('user_id');
+            window.location.href = 'login.php'; // Redirect to login page
+        }
+
+        // Initial loading of notes
+        loadNotes();
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light background color for the page */
+}
+
+h2, h3 {
+    text-align: center;
+    color: #333; /* Darker color for headers */
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold; /* Make labels bold */
+    color: #555; /* Slightly lighter color for labels */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 10px; /* Increased padding for better spacing */
+    margin-bottom: 10px;
+    border: 2px solid #ccc; /* Border for input fields */
+    border-radius: 4px; /* Rounded corners */
+    transition: border-color 0.3s; /* Smooth transition on focus */
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+textarea:focus {
+    border-color: #4CAF50; /* Highlight border color on focus */
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    border: none;
+    border-radius: 4px; /* Rounded corners for button */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+.error {
+    color: red;
+    text-align: center;
+}
+
+ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+}
+
+li {
+    background-color: #fff; /* White background for notes */
+    border: 1px solid #ccc; /* Border around notes */
+    border-radius: 4px; /* Rounded corners for notes */
+    padding: 15px; /* Padding for notes */
+    margin-bottom: 10px; /* Space between notes */
+    transition: box-shadow 0.3s; /* Transition for shadow */
+}
+
+li:hover {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Add shadow effect on hover */
+}
+
+a {
+    color: #4CAF50; /* Color for links */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
